@@ -17,6 +17,9 @@
         data-bs-target="#modalForm">
         Register
     </button>
+    <button type="button" id ="btnConsLS" class="btn btn-danger btn-outline-primary position-absolute top-50 end-0">
+        Local Storage
+    </button>
 
     <!-- Modal -->
     <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -45,16 +48,30 @@
                         <div class="modal-footer d-block">
                             <p class="float-start">Not yet account <a href="#">Sign Up</a></p>
                             <button type="submit" class="btn btn-warning float-end">Submit</button>
+
+
+
                             <!--СКРИПТ с ЛокалСторейдж-->
                             <script>
                                 let userName = document.querySelector('[id="username"]');
                                 let userPassword = document.querySelector('[id="password"]');
                                 let form = document.querySelector('[id="registerForm"]');
+                                let info={};
+
+
                                 form.addEventListener("submit", function(){
                                     localStorage.setItem('userName', userName.value);
                                     localStorage.setItem('userPassword', userPassword.value);
                                 });
+
+                                let btnConsLS = document.querySelector('[id ="btnConsLS"]');
+                                btnConsLS.addEventListener("click",function(){
+                                    console.log(localStorage);
+                                    info.name=userName.value;
+                                });
                                 
+
+
                             </script>
                         </div>
                     </form>
