@@ -27,7 +27,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="registerForm">
                         <div class="mb-3">
                             <label class="form-label">Email Address</label>
                             <input type="text" class="form-control" id="username" name="username"
@@ -49,10 +49,10 @@
                             <script>
                                 let userName = document.querySelector('[id="username"]');
                                 let userPassword = document.querySelector('[id="password"]');
-                                let submit = document.querySelector('[type="submit"]');
-                                submit.addEventListener("click", function(){
-                                    userName.value = localStorage.setItem(userName, userName.value);
-                                    userPassword.value = localStorage.setItem(userPassword, userPassword.value);
+                                let form = document.querySelector('[id="registerForm"]');
+                                form.addEventListener("submit", function(){
+                                    localStorage.setItem('userName', userName.value);
+                                    localStorage.setItem('userPassword', userPassword.value);
                                 });
                                 
                             </script>
