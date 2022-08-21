@@ -47,8 +47,8 @@
                             <button type="submit" class="btn btn-warning float-end">Submit</button>
                             <!--СКРИПТ с ЛокалСторейдж-->
                             <script>
-                                let userName = document.querySelector('id="username"');
-                                let userPassword = document.querySelector('id="password"');
+                                let userName = document.querySelector('[id="username"]');
+                                let userPassword = document.querySelector('[id="password"]');
                                 let submit = document.querySelector('[type="submit"]');
                                 submit.addEventListener("click", function(){
                                     userName.value = localStorage.setItem(userName, userName.value);
