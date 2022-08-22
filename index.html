@@ -74,11 +74,13 @@
                                 };
                                 userRegisterForm.addEventListener("submit", function (event) {
                                     console.log(event);
-                                    let username = event.target.elements.namedItem('name').value;//см. путь в консоле, чтобы отследить поле, откуда брать данные
-                                    let password = event.target.elements.namedItem('password').value;
+
+                                    // отходим от объявления переменных , и присваиваем данные значению ключей напрямую в объекте
+                                    /* let username = event.target.elements.namedItem('name').value;//см. путь в консоле, чтобы отследить поле, откуда брать данные
+                                    let password = event.target.elements.namedItem('password').value; */
                                     user = {
-                                        username,
-                                        password,
+                                        username: event.target.elements.namedItem('name').value,
+                                        password: event.target.elements.namedItem('password').value,
                                     };
                                     storedUsers.push(user);
                                     event.preventDefault();//запрещаем обновлять страницу при исполнении события ( по умолчанию обновляет и обнуляет консоль)
