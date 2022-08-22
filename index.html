@@ -20,7 +20,9 @@
     <button type="button" id ="btnConsLS" class="btn btn-danger btn-outline-primary position-absolute top-50 end-0">
         Данные в Local Storage
     </button>
-
+    <button type="button" id ="btnClearLS" class="btn btn-danger btn-outline-primary position-absolute top-50 end-50">
+        Очистить Local Storage
+    </button>
     <!-- Modal -->
     <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -82,7 +84,7 @@
                                         password,
                                     };
                                     storedUsers.push(user);
-                                    event.preventDefault;
+                                    event.preventDefault();
                                     event.target.reset;
                                     /* localStorage.setItem('userList', JSON.stringify(storedUsers)); Старая запись до добавления методов в прототип */
                                     localStorage.setObject('userList', storedUsers);
@@ -92,6 +94,13 @@
                                 btnConsLS.addEventListener("click",function(){
                                     /* console.log(localStorage.getItem('userList')); Старая запись до добавления методов в прототип - раньше выдавало строку, длашее будет выдавать массив из объектов */
                                     console.log(localStorage.getObject('userList'));
+                                });
+                                
+                                //Очистка localStorage
+                                    let btnClearLS = document.querySelector('[id ="btnClearLS"]');
+                                    btnClearLS.addEventListener("click",function(){
+                                    localStorage.clear();
+                                    console.log('LocalStorage очищен!')
                                 });
                             </script>
 </body>
