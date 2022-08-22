@@ -133,6 +133,7 @@
 
 
                                 userLogInForm.addEventListener("submit",function(event){
+                                    console.log(event);
                                     userData={
                                         username: event.target.elements.namedItem('userName').value,
                                         password: event.target.elements.namedItem('userPassword').value,
