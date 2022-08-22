@@ -18,7 +18,7 @@
         Register
     </button>
     <button type="button" id ="btnConsLS" class="btn btn-danger btn-outline-primary position-absolute top-50 end-0">
-        Local Storage
+        Данные в Local Storage
     </button>
 
     <!-- Modal -->
@@ -48,31 +48,6 @@
                         <div class="modal-footer d-block">
                             <p class="float-start">Not yet account <a href="#">Sign Up</a></p>
                             <button type="submit" class="btn btn-warning float-end">Submit</button>
-
-
-
-                            <!--СКРИПТ с ЛокалСторейдж-->
-                            <script>
-                                let userName = document.querySelector('[id="username"]');
-                                let userPassword = document.querySelector('[id="password"]');
-                                let form = document.querySelector('[id="registerForm"]');
-                                let info={};
-
-
-                                form.addEventListener("submit", function(){
-                                    localStorage.setItem('userName', userName.value);
-                                    localStorage.setItem('userPassword', userPassword.value);
-                                });
-
-                                let btnConsLS = document.querySelector('[id ="btnConsLS"]');
-                                btnConsLS.addEventListener("click",function(){
-                                    console.log(localStorage);
-                                    info.name=userName.value;
-                                });
-                                
-
-
-                            </script>
                         </div>
                     </form>
                 </div>
@@ -82,6 +57,43 @@
 
     <!-- Bootstrap JS -->
     <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+    
+                            <!--СКРИПТ с ЛокалСторейдж-->
+                            <script>
+//добавляем в прототип метод setObject и getObject, чтобы в дальнейшем оперировать объектами напрямую, а не конвертировать JSON
+                                    Storage.prototype.setObject = function (key, value) {
+                                        this.setItem(key, JSON.stringify(value));
+                                         };
+                                    Storage.prototype.getObject = function (key) {
+                                        return JSON.parse(this.getItem(key));}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                                let userRegisterForm = document.querySelector('[id="registerForm"]');
+                                let storedUsers = JSON.parse(localStorage.getItem('userList'));
+                                if (!storedUsers){
+                                    storedUsers = [];
+                                };
+                                userRegisterForm.addEventListener("submit", function (event) {
+                                    console.log(event);
+                                    let username = event.target.elements.namedItem('username').value;
+                                    let password = event.target.elements.namedItem('password').value;
+                                    user = {
+                                        username,
+                                        password,
+                                    };
+                                    storedUsers.push(user);
+                                    event.preventDefault;
+                                    event.target.reset;
+                                    /* localStorage.setItem('userList', JSON.stringify(storedUsers)); Старая запись до добавления методов в прототип */
+                                    localStorage.setObject('userList', storedUsers);
+                                });
+
+                                let btnConsLS = document.querySelector('[id ="btnConsLS"]');
+                                btnConsLS.addEventListener("click",function(){
+                                    /* console.log(localStorage.getItem('userList')); Старая запись до добавления методов в прототип - раньше выдавало строку, длашее будет выдавать массив из объектов */
+                                    console.log(localStorage.getObject('userList'));
+                                });
+                            </script>
 </body>
 
 </html>
