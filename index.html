@@ -6,13 +6,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" />
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://www.markuptag.com/bootstrap/5/css/bootstrap.min.css" />
 </head>
 
 <body>
-    <!-- Click on Modal Button -->
     <button type="button" class="btn btn-warning mx-auto d-block position-absolute top-0 end-0" data-bs-toggle="modal"
         data-bs-target="#modalForm">
         Register
@@ -23,7 +20,7 @@
     <button type="button" id ="btnClearLS" class="btn btn-danger btn-outline-primary position-absolute top-50 end-50">
         Очистить Local Storage
     </button>
-    <!-- Modal -->
+    <!-- Modal FORM REGISTRATION -->
     <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -35,7 +32,7 @@
                     <form id="registerForm">
                         <div class="mb-3">
                             <label class="form-label">Email Address</label>
-                            <input type="text" class="form-control" id="username" name="username"
+                            <input type="text" class="form-control" id="name" name="name"
                                 placeholder="Username" />
                         </div>
                         <div class="mb-3">
@@ -77,15 +74,15 @@
                                 };
                                 userRegisterForm.addEventListener("submit", function (event) {
                                     console.log(event);
-                                    let username = event.target.elements.namedItem('username').value;
+                                    let username = event.target.elements.namedItem('name').value;//см. путь в консоле, чтобы отследить поле, откуда брать данные
                                     let password = event.target.elements.namedItem('password').value;
                                     user = {
                                         username,
                                         password,
                                     };
                                     storedUsers.push(user);
-                                    event.preventDefault();
-                                    event.target.reset;
+                                    event.preventDefault();//запрещаем обновлять страницу при исполнении события ( по умолчанию обновляет и обнуляет консоль)
+                                    event.target.reset;//Очищаем все поля формы
                                     /* localStorage.setItem('userList', JSON.stringify(storedUsers)); Старая запись до добавления методов в прототип */
                                     localStorage.setObject('userList', storedUsers);
                                 });
