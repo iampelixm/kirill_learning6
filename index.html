@@ -2,172 +2,499 @@
 <html lang="en">
 
 <head>
-    <title></title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" />
-    <link rel="stylesheet" href="https://www.markuptag.com/bootstrap/5/css/bootstrap.min.css" />
+  <title></title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" />
+  <link rel="stylesheet" href="https://www.markuptag.com/bootstrap/5/css/bootstrap.min.css" />
 </head>
 
 <body>
-    <!-- кнопка Регистрация -->
-    <button type="button" id ="btnRegister" class="btn btn-warning mx-auto d-block position-absolute top-0 end-0" data-bs-toggle="modal"
-        data-bs-target="#modalFormRegister">
-        Register
-    </button>
-    <!-- кнопка ЛогИн -->
-        <button type="button" id="btnLogIn" class="btn btn-warning mx-auto d-block position-absolute top-0 left-0" data-bs-toggle="modal"
-        data-bs-target="#modalFormLogIn">
-        Log In
-    </button>
-    <button type="button" id ="btnConsLS" class="btn btn-danger btn-outline-primary position-absolute top-50 end-0">
-        Данные в Local Storage
-    </button>
-    <button type="button" id ="btnClearLS" class="btn btn-danger btn-outline-primary position-absolute top-50 end-50">
-        Очистить Local Storage
-    </button>
-    <!-- Modal FORM REGISTRATION -->
-    <div class="modal fade" id="modalFormRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Register</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <!-- ТАБЫ -->
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="userlist-tab" data-bs-toggle="tab" data-bs-target="#userlist" type="button"
+        role="tab" aria-controls="userlist" aria-selected="true">Лист зарегистрированных пользователей</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="authenticate-tab" data-bs-toggle="tab" data-bs-target="#authenticate" type="button"
+        role="tab" aria-controls="authenticate" aria-selected="false">Аутентифицированный пользователь</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab"
+        aria-controls="profile" aria-selected="false">Профиль пользователя</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <!-- ЮЗЕРЛИСТ-ТАБ -->
+    <div class="tab-pane fade show active" id="userlist" role="tabpanel" aria-labelledby="userlist-tab">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+        integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+      <div class="container mt-3 mb-4">
+        <div class="col-lg-9 mt-4 mt-lg-0">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
+                <table class="table manage-candidates-top mb-0">
+                  <thead>
+                    <tr>
+                      <th>Candidate Name</th>
+                      <th class="text-center">Status</th>
+                      <th class="action text-right">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="candidates-list">
+                      <td class="title">
+                        <div class="thumb">
+                          <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                        </div>
+                        <div class="candidate-list-details">
+                          <div class="candidate-list-info">
+                            <div class="candidate-list-title">
+                              <h5 class="mb-0"><a href="#">Brooke Kelly</a></h5>
+                            </div>
+                            <div class="candidate-list-option">
+                              <ul class="list-unstyled">
+                                <li><i class="fas fa-filter pr-1"></i>Information Technology</li>
+                                <li><i class="fas fa-map-marker-alt pr-1"></i>Rolling Meadows, IL 60008</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="candidate-list-favourite-time text-center">
+                        <a class="candidate-list-favourite order-2 text-danger" href="#"><i
+                            class="fas fa-heart"></i></a>
+                        <span class="candidate-list-time order-1">Shortlisted</span>
+                      </td>
+                      <td>
+                        <ul class="list-unstyled mb-0 d-flex justify-content-end">
+                          <li><a href="#" class="text-primary" data-toggle="tooltip" title=""
+                              data-original-title="view"><i class="far fa-eye"></i></a></li>
+                          <li><a href="#" class="text-info" data-toggle="tooltip" title="" data-original-title="Edit"><i
+                                class="fas fa-pencil-alt"></i></a></li>
+                          <li><a href="#" class="text-danger" data-toggle="tooltip" title=""
+                              data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="candidates-list">
+                      <td class="title">
+                        <div class="thumb">
+                          <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                        </div>
+                        <div class="candidate-list-details">
+                          <div class="candidate-list-info">
+                            <div class="candidate-list-title">
+                              <h5 class="mb-0"><a href="#">Ronald Bradley</a></h5>
+                            </div>
+                            <div class="candidate-list-option">
+                              <ul class="list-unstyled">
+                                <li><i class="fas fa-filter pr-1"></i>Human Resources</li>
+                                <li><i class="fas fa-map-marker-alt pr-1"></i>Monroe Township, NJ 08831</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="candidate-list-favourite-time text-center">
+                        <a class="candidate-list-favourite order-2 text-danger" href="#"><i
+                            class="fas fa-heart"></i></a>
+                        <span class="candidate-list-time order-1">Shortlisted</span>
+                      </td>
+                      <td>
+                        <ul class="list-unstyled mb-0 d-flex justify-content-end">
+                          <li><a href="#" class="text-primary" data-toggle="tooltip" title=""
+                              data-original-title="view"><i class="far fa-eye"></i></a></li>
+                          <li><a href="#" class="text-info" data-toggle="tooltip" title="" data-original-title="Edit"><i
+                                class="fas fa-pencil-alt"></i></a></li>
+                          <li><a href="#" class="text-danger" data-toggle="tooltip" title=""
+                              data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="candidates-list">
+                      <td class="title">
+                        <div class="thumb">
+                          <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
+                        </div>
+                        <div class="candidate-list-details">
+                          <div class="candidate-list-info">
+                            <div class="candidate-list-title">
+                              <h5 class="mb-0"><a href="#">Rafael Briggs</a></h5>
+                            </div>
+                            <div class="candidate-list-option">
+                              <ul class="list-unstyled">
+                                <li><i class="fas fa-filter pr-1"></i>Recruitment Consultancy</li>
+                                <li><i class="fas fa-map-marker-alt pr-1"></i>Haines City, FL 33844</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="candidate-list-favourite-time text-center">
+                        <a class="candidate-list-favourite order-2 text-danger" href="#"><i
+                            class="fas fa-heart"></i></a>
+                        <span class="candidate-list-time order-1">Shortlisted</span>
+                      </td>
+                      <td>
+                        <ul class="list-unstyled mb-0 d-flex justify-content-end">
+                          <li><a href="#" class="text-primary" data-toggle="tooltip" title=""
+                              data-original-title="view"><i class="far fa-eye"></i></a></li>
+                          <li><a href="#" class="text-info" data-toggle="tooltip" title="" data-original-title="Edit"><i
+                                class="fas fa-pencil-alt"></i></a></li>
+                          <li><a href="#" class="text-danger" data-toggle="tooltip" title=""
+                              data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="candidates-list">
+                      <td class="title">
+                        <div class="thumb">
+                          <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
+                        </div>
+                        <div class="candidate-list-details">
+                          <div class="candidate-list-info">
+                            <div class="candidate-list-title">
+                              <h5 class="mb-0"><a href="#">Vickie Meyer</a></h5>
+                            </div>
+                            <div class="candidate-list-option">
+                              <ul class="list-unstyled">
+                                <li><i class="fas fa-filter pr-1"></i>Human Resources</li>
+                                <li><i class="fas fa-map-marker-alt pr-1"></i>Minneapolis, MN 55406</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="candidate-list-favourite-time text-center">
+                        <a class="candidate-list-favourite order-2 text-danger" href="#"><i
+                            class="fas fa-heart"></i></a>
+                        <span class="candidate-list-time order-1">Shortlisted</span>
+                      </td>
+                      <td>
+                        <ul class="list-unstyled mb-0 d-flex justify-content-end">
+                          <li><a href="#" class="text-primary" data-toggle="tooltip" title=""
+                              data-original-title="view"><i class="far fa-eye"></i></a></li>
+                          <li><a href="#" class="text-info" data-toggle="tooltip" title="" data-original-title="Edit"><i
+                                class="fas fa-pencil-alt"></i></a></li>
+                          <li><a href="#" class="text-danger" data-toggle="tooltip" title=""
+                              data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="candidates-list">
+                      <td class="title">
+                        <div class="thumb">
+                          <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="">
+                        </div>
+                        <div class="candidate-list-details">
+                          <div class="candidate-list-info">
+                            <div class="candidate-list-title">
+                              <h5 class="mb-0"><a href="#">Nichole Haynes</a></h5>
+                            </div>
+                            <div class="candidate-list-option">
+                              <ul class="list-unstyled">
+                                <li><i class="fas fa-filter pr-1"></i>Information Technology</li>
+                                <li><i class="fas fa-map-marker-alt pr-1"></i>Botchergate, Carlisle</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="candidate-list-favourite-time text-center">
+                        <a class="candidate-list-favourite order-2 text-danger" href="#"><i
+                            class="fas fa-heart"></i></a>
+                        <span class="candidate-list-time order-1">Shortlisted</span>
+                      </td>
+                      <td>
+                        <ul class="list-unstyled mb-0 d-flex justify-content-end">
+                          <li><a href="#" class="text-primary" data-toggle="tooltip" title=""
+                              data-original-title="view"><i class="far fa-eye"></i></a></li>
+                          <li><a href="#" class="text-info" data-toggle="tooltip" title="" data-original-title="Edit"><i
+                                class="fas fa-pencil-alt"></i></a></li>
+                          <li><a href="#" class="text-danger" data-toggle="tooltip" title=""
+                              data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- НАВИГАТОР СТРАНИЦ СПИСКА -->
+                <div class="text-center mt-3 mt-sm-3">
+                  <ul class="pagination justify-content-center mb-0">
+                    <li class="page-item disabled"> <span class="page-link">Prev</span> </li>
+                    <li class="page-item active" aria-current="page"><span class="page-link">1 </span> <span
+                        class="sr-only">(current)</span></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">...</a></li>
+                    <li class="page-item"><a class="page-link" href="#">25</a></li>
+                    <li class="page-item"> <a class="page-link" href="#">Next</a> </li>
+                  </ul>
                 </div>
-                <div class="modal-body">
-                    <form id="registerForm">
-                        <div class="mb-3">
-                            <label class="form-label">Email Address</label>
-                            <input type="text" class="form-control" id="name" name="name"
-                                placeholder="Username" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" name="password"
-                                placeholder="Password" />
-                        </div>
-<!--                         <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="rememberMe" />
-                            <label class="form-check-label" for="rememberMe">Remember me</label> -->
-                        </div>
-                        <div class="modal-footer d-block">
-                            <!-- <p class="float-start">Not yet account <a href="#">Sign Up</a></p> -->
-                            <button type="submit" class="btn btn-warning float-end">Submit</button>
-                        </div>
-                    </form>
-                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- АУТЕНТИФИКАЦИЯ-ТАБ -->
+    <div class="tab-pane fade" id="authenticate" role="tabpanel" aria-labelledby="authenticate-tab">Аутентифицированный
+      пользователь</div>
+    <!-- ПРОФИЛЬ-ТАБ -->
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+          <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
+                width="150px"
+                src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
+                class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span>
+              </span></div>
+          </div>
+          <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="text-right">Profile Settings</h4>
+              </div>
+              <div class="row mt-2">
+                <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control"
+                    placeholder="first name" value=""></div>
+                <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control"
+                    value="" placeholder="surname"></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text"
+                    class="form-control" placeholder="enter phone number" value=""></div>
+                <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text"
+                    class="form-control" placeholder="enter address line 1" value=""></div>
+                <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text"
+                    class="form-control" placeholder="enter address line 2" value=""></div>
+                <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control"
+                    placeholder="enter address line 2" value=""></div>
+                <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control"
+                    placeholder="enter address line 2" value=""></div>
+                <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control"
+                    placeholder="enter address line 2" value=""></div>
+                <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control"
+                    placeholder="enter email id" value=""></div>
+                <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control"
+                    placeholder="education" value=""></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control"
+                    placeholder="country" value=""></div>
+                <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control"
+                    value="" placeholder="state"></div>
+              </div>
+              <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save
+                  Profile</button></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 py-5">
+              <div class="d-flex justify-content-between align-items-center experience"><span>Edit
+                  Experience</span><span class="border px-3 p-1 add-experience"><i
+                    class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
+              <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text"
+                  class="form-control" placeholder="experience" value=""></div> <br>
+              <div class="col-md-12"><label class="labels">Additional Details</label><input type="text"
+                  class="form-control" placeholder="additional details" value=""></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  <!-- кнопка Регистрация -->
+  <button type="button" id="btnRegister" class="btn btn-warning mx-auto d-block position-absolute top-0 end-0"
+    data-bs-toggle="modal" data-bs-target="#modalFormRegister">
+    Register
+  </button>
+  <!-- кнопка ЛогИн -->
+  <button type="button" id="btnLogIn" class="btn btn-warning mx-auto d-block position-absolute top-5 end-0"
+    data-bs-toggle="modal" data-bs-target="#modalFormLogIn">
+    Log In
+  </button>
+  <!-- КНОПКА LOCAL Storage -->
+  <button type="button" id="btnConsLS" class="btn btn-danger btn-outline-primary position-absolute top-50 end-0">
+    Данные в Local Storage
+  </button>
+  <!-- КНОПКА CLEAR lOCAL Storage -->
+  <button type="button" id="btnClearLS" class="btn btn-danger btn-outline-primary position-absolute top-50 end-50">
+    Очистить Local Storage
+  </button>
+  <!-- Modal FORM REGISTRATION -->
+  <div class="modal fade" id="modalFormRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="registerForm">
+            <div class="mb-3">
+              <label class="form-label">Email Address</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Username" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
             </div>
         </div>
-    </div>
-    <!-- Modal FORM LogIn -->
-        <div class="modal fade" id="modalFormLogIn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Log In</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="logInForm">
-                        <div class="mb-3">
-                            <label class="form-label">Email Address</label>
-                            <input type="text" class="form-control" id="userName" name="userName"
-                                placeholder="Username" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Password</label>
-                            <input type="password" class="form-control" id="userPassword" name="userPassword"
-                                placeholder="Password" />
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="rememberMe" />
-                            <label class="form-check-label" for="rememberMe">Remember me</label>
-                        </div>
-                        <div class="modal-footer d-block">
-                            <p class="float-start">Not yet account <a href="#">Sign Up</a></p>
-                            <button type="submit" class="btn btn-warning float-end">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+        <div class="modal-footer d-block">
+          <button type="submit" class="btn btn-warning float-end">Submit</button>
         </div>
+        </form>
+      </div>
     </div>
-    <!-- Bootstrap JS -->
-        <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
-                            <script>
-//добавляем в прототип метод setObject и getObject, чтобы в дальнейшем оперировать объектами напрямую, а не конвертировать JSON
-                                    Storage.prototype.setObject = function (key, value) {
-                                        this.setItem(key, JSON.stringify(value));
-                                         };
-                                    Storage.prototype.getObject = function (key) {
-                                        return JSON.parse(this.getItem(key));}
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                /* REGISTRATION SCRIPT */
-                                let userRegisterForm = document.querySelector('[id="registerForm"]');
-                                let storedUsers = JSON.parse(localStorage.getItem('userList'));
-                                if (!storedUsers){
-                                    storedUsers = [];
-                                };
-                                userRegisterForm.addEventListener("submit", function (event) {
-                                    console.log(event);
-
-                                    // отходим от объявления переменных , и присваиваем данные значению ключей напрямую в объекте
-                                    /* let username = event.target.elements.namedItem('name').value;//см. путь в консоле, чтобы отследить поле, откуда брать данные
-                                    let password = event.target.elements.namedItem('password').value; */
-                                    user = {
-                                        username: event.target.elements.namedItem('name').value,
-                                        password: event.target.elements.namedItem('password').value,
-                                    };
-                                    storedUsers.push(user);
-                                    event.preventDefault();//запрещаем обновлять страницу при исполнении события ( по умолчанию обновляет и обнуляет консоль)
-                                    event.target.reset;//Очищаем все поля формы
-                                    /* localStorage.setItem('userList', JSON.stringify(storedUsers)); Старая запись до добавления методов в прототип */
-                                    localStorage.setObject('userList', storedUsers);
-                                });
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-                                /* LOGIN SCRIPT */
-                                let userLogInForm = document.querySelector('[id="logInForm"]');
-
-
-                                userLogInForm.addEventListener("submit",function(event){
-                                    /* console.log(event); */
-                                    userData={
-                                        username: event.target.elements.namedItem('userName').value,
-                                        password: event.target.elements.namedItem('userPassword').value,
-                                    };
-                                    
-                                    let loginMutch = storedUsers.filter(storedUsers => (storedUsers.username === userData.username && storedUsers.password === userData.password));
-
-                                    (loginMutch[0] == null) ? console.log('Аутентификация не удалась') : console.log('Успешная аутентификация!');
-
-                                    console.log(loginMutch);
-                                    /* console.log(userData); */
-                                    event.preventDefault();
-                                    event.target.reset;
-                                });
+  </div>
+  </div>
+  <!-- Modal FORM LogIn -->
+  <div class="modal fade" id="modalFormLogIn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Log In</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="logInForm">
+            <div class="mb-3">
+              <label class="form-label">Email Address</label>
+              <input type="text" class="form-control" id="userName" name="userName" placeholder="Username" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control" id="userPassword" name="userPassword"
+                placeholder="Password" />
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="rememberMe" />
+              <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div>
+            <div class="modal-footer d-block">
+              <p class="float-start">Not yet account <a href="#">Sign Up</a></p>
+              <button type="submit" class="btn btn-warning float-end">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap JS -->
+  <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+  <script>
+    //добавляем в прототип метод setObject и getObject, чтобы в дальнейшем оперировать объектами напрямую, а не конвертировать JSON
+    Storage.prototype.setObject = function (key, value) {
+      this.setItem(key, JSON.stringify(value));
+    };
+    Storage.prototype.getObject = function (key) {
+      return JSON.parse(this.getItem(key));
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /* REGISTRATION SCRIPT */
+    let userRegisterForm = document.querySelector('[id="registerForm"]');
+    let storedUsers = JSON.parse(localStorage.getItem('userList'));
+    if (!storedUsers) {
+      storedUsers = [];
+    };
 
 
+    userRegisterForm.addEventListener("submit", function (event) {
+      console.log(event);
+      // отходим от объявления переменных , и присваиваем данные значению ключей напрямую в объекте
+      /* let username = event.target.elements.namedItem('name').value;//см. путь в консоле, чтобы отследить поле, откуда брать данные
+      let password = event.target.elements.namedItem('password').value; */
+      user = {
+        username: event.target.elements.namedItem('name').value,
+        password: event.target.elements.namedItem('password').value,
+      };
+      console.log(user)
+      storedUsers.push(user);
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                /* Вывод в консоль LocalStorage */
-                                let btnConsLS = document.querySelector('[id ="btnConsLS"]');
-                                btnConsLS.addEventListener("click",function(){
-                                    /* console.log(localStorage.getItem('userList')); Старая запись до добавления методов в прототип - раньше выдавало строку, длашее будет выдавать массив из объектов */
-                                    console.log(localStorage.getObject('userList'));
-                                });
-                                
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                //Очистка localStorage
-                                    let btnClearLS = document.querySelector('[id ="btnClearLS"]');
-                                    btnClearLS.addEventListener("click",function(){
-                                    localStorage.clear();
-                                    console.log('LocalStorage очищен!')
-                                });
-                            </script>
+
+      /* localStorage.setObject('user',user) */;
+      /* localStorage.setItem('user', JSON.stringify(user)); */
+      /*              for (let i = 0 ; storedUsers.length < i; i++){
+                       if(storedUsers.username === user.username){
+                           console.log('пользователь найден');
+                       }
+                       else{
+                           console.log('пользователь найден');
+                       }
+                   }; */
+      /*    if(user.username===storedUsers.username){//не пашет user.username===storedUsers.username
+             alert('Данное имя пользователя уже занято, пожалуйста придумайте другое!')
+         }
+         else{
+             alert('Поздравляем вас, вы успешно зарегистрировались в системе!')
+             storedUsers.push(user);
+         }; */
+      /* storedUsers.push(user); */
+
+
+
+      event.preventDefault();//запрещаем обновлять страницу при исполнении события ( по умолчанию обновляет и обнуляет консоль)
+      event.target.reset;//Очищаем все поля формы
+      localStorage.setObject('userList', storedUsers);
+      /* localStorage.setItem('userList', JSON.stringify(storedUsers)); Старая запись до добавления методов в прототип */
+      /* localStorage.setObject('userList', storedUsers); */
+    });
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    /* LOGIN SCRIPT */
+    let userLogInForm = document.querySelector('[id="logInForm"]');
+
+
+    userLogInForm.addEventListener("submit", function (event) {
+      /* console.log(event); */
+      userData = {
+        username: event.target.elements.namedItem('userName').value,
+        password: event.target.elements.namedItem('userPassword').value,
+      };
+
+      let loginMutch = storedUsers.filter(storedUsers => (storedUsers.username === userData.username && storedUsers.password === userData.password));
+
+      if (loginMutch[0] == null) {
+        console.log('Аутентификация не удалась! Введен неверный логин или пароль!');
+        alert('Аутентификация не удалась! Введен неверный логин или пароль!')
+      }
+      else {
+        alert('Успешная аутентификация!')
+        console.log('Успешная аутентификация!');
+      };
+      event.preventDefault();
+      event.target.reset;
+    });
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /* Вывод в консоль LocalStorage */
+    let btnConsLS = document.querySelector('[id ="btnConsLS"]');
+    btnConsLS.addEventListener("click", function () {
+      /* console.log(localStorage.getItem('userList')); Старая запись до добавления методов в прототип - раньше выдавало строку, длашее будет выдавать массив из объектов */
+      console.log(localStorage.getObject('userList'));
+    });
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Очистка localStorage
+    let btnClearLS = document.querySelector('[id ="btnClearLS"]');
+    btnClearLS.addEventListener("click", function () {
+      localStorage.clear();
+      console.log('LocalStorage очищен!')
+    });
+  </script>
 </body>
 
 </html>
