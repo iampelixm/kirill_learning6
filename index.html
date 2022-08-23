@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<title>My project</title>
 
 <head>
   <title></title>
@@ -390,6 +391,11 @@
   <!-- Bootstrap JS -->
   <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
   <script>
+
+
+    ////////////////////////////////////////////////////////C К Р И П Т Ы/////////////////////////////////////////////////////////////////////////////
+
+
     //добавляем в прототип метод setObject и getObject, чтобы в дальнейшем оперировать объектами напрямую, а не конвертировать JSON
     Storage.prototype.setObject = function (key, value) {
       this.setItem(key, JSON.stringify(value));
@@ -398,48 +404,37 @@
       return JSON.parse(this.getItem(key));
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /* REGISTRATION SCRIPT */
+    /* ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ */
     let userRegisterForm = document.querySelector('[id="registerForm"]');
+    let modalRegisterForm = new bootstrap.Modal(document.getElementById('modalFormRegister'));
+    let modalLoginForm = new bootstrap.Modal(document.getElementById('modalFormLogIn'));
     let storedUsers = JSON.parse(localStorage.getItem('userList'));
     if (!storedUsers) {
       storedUsers = [];
     };
-
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /* REGISTRATION SCRIPT */
 
     userRegisterForm.addEventListener("submit", function (event) {
       console.log(event);
-      // отходим от объявления переменных , и присваиваем данные значению ключей напрямую в объекте
-      /* let username = event.target.elements.namedItem('name').value;//см. путь в консоле, чтобы отследить поле, откуда брать данные
-      let password = event.target.elements.namedItem('password').value; */
       user = {
         username: event.target.elements.namedItem('name').value,
         password: event.target.elements.namedItem('password').value,
       };
-      console.log(user)
-      storedUsers.push(user);
 
+      let regMutch = storedUsers.filter(storedUsers => (storedUsers.username === user.username));
 
-
-      /* localStorage.setObject('user',user) */;
-      /* localStorage.setItem('user', JSON.stringify(user)); */
-      /*              for (let i = 0 ; storedUsers.length < i; i++){
-                       if(storedUsers.username === user.username){
-                           console.log('пользователь найден');
-                       }
-                       else{
-                           console.log('пользователь найден');
-                       }
-                   }; */
-      /*    if(user.username===storedUsers.username){//не пашет user.username===storedUsers.username
-             alert('Данное имя пользователя уже занято, пожалуйста придумайте другое!')
-         }
-         else{
-             alert('Поздравляем вас, вы успешно зарегистрировались в системе!')
-             storedUsers.push(user);
-         }; */
-      /* storedUsers.push(user); */
-
-
+      if (regMutch[0] == null) {
+        storedUsers.push(user);
+        console.log('Успешная регистрация');
+        modalRegisterForm.hide();
+        alert(`Вы успешно зарегистрировались ${user.username} !`);
+      }
+      else {
+        console.log('Логин занят');
+        modalRegisterForm.hide();
+        alert(`Логин ${user.username} занят! Пожалуйста введите другой логин!`);
+      };
 
       event.preventDefault();//запрещаем обновлять страницу при исполнении события ( по умолчанию обновляет и обнуляет консоль)
       event.target.reset;//Очищаем все поля формы
@@ -466,11 +461,13 @@
 
       if (loginMutch[0] == null) {
         console.log('Аутентификация не удалась! Введен неверный логин или пароль!');
+        modalLoginForm.hide();
         alert('Аутентификация не удалась! Введен неверный логин или пароль!')
       }
       else {
-        alert('Успешная аутентификация!')
-        console.log('Успешная аутентификация!');
+        modalLoginForm.hide();
+        alert(`Успешная аутентификация! Приветствую, ${userData.username}!`);
+        console.log(`Успешная аутентификация!`);
       };
       event.preventDefault();
       event.target.reset;
