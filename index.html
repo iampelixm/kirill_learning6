@@ -341,7 +341,7 @@
           <form id="registerForm">
             <div class="mb-3">
               <label class="form-label">Email Address</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="Username" />
+              <input type="email" class="form-control" id="mail" name="email" placeholder="Введите ваш Email" />
             </div>
             <div class="mb-3">
               <label class="form-label">Password</label>
@@ -368,7 +368,7 @@
           <form id="logInForm">
             <div class="mb-3">
               <label class="form-label">Email Address</label>
-              <input type="text" class="form-control" id="userName" name="userName" placeholder="Username" />
+              <input type="email" class="form-control" id="userMail" name="userMail" placeholder="Введите ваш Email" />
             </div>
             <div class="mb-3">
               <label class="form-label">Password</label>
@@ -418,7 +418,7 @@
     userRegisterForm.addEventListener("submit", function (event) {
       console.log(event);
       user = {
-        username: event.target.elements.namedItem('name').value,
+        username: event.target.elements.namedItem('email').value,
         password: event.target.elements.namedItem('password').value,
       };
 
@@ -453,7 +453,7 @@
     userLogInForm.addEventListener("submit", function (event) {
       /* console.log(event); */
       userData = {
-        username: event.target.elements.namedItem('userName').value,
+        username: event.target.elements.namedItem('userMail').value,
         password: event.target.elements.namedItem('userPassword').value,
       };
 
