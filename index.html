@@ -12,12 +12,12 @@
 <body>
     <!-- кнопка Регистрация -->
     <button type="button" id ="btnRegister" class="btn btn-warning mx-auto d-block position-absolute top-0 end-0" data-bs-toggle="modal"
-        data-bs-target="#modalForm">
+        data-bs-target="#modalFormRegister">
         Register
     </button>
     <!-- кнопка ЛогИн -->
         <button type="button" id="btnLogIn" class="btn btn-warning mx-auto d-block position-absolute top-0 left-0" data-bs-toggle="modal"
-        data-bs-target="#modalForm">
+        data-bs-target="#modalFormLogIn">
         Log In
     </button>
     <button type="button" id ="btnConsLS" class="btn btn-danger btn-outline-primary position-absolute top-50 end-0">
@@ -27,7 +27,7 @@
         Очистить Local Storage
     </button>
     <!-- Modal FORM REGISTRATION -->
-    <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalFormRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -46,12 +46,12 @@
                             <input type="password" class="form-control" id="password" name="password"
                                 placeholder="Password" />
                         </div>
-                        <div class="mb-3 form-check">
+<!--                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="rememberMe" />
-                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                            <label class="form-check-label" for="rememberMe">Remember me</label> -->
                         </div>
                         <div class="modal-footer d-block">
-                            <p class="float-start">Not yet account <a href="#">Sign Up</a></p>
+                            <!-- <p class="float-start">Not yet account <a href="#">Sign Up</a></p> -->
                             <button type="submit" class="btn btn-warning float-end">Submit</button>
                         </div>
                     </form>
@@ -60,7 +60,7 @@
         </div>
     </div>
     <!-- Modal FORM LogIn -->
-        <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalFormLogIn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -133,12 +133,18 @@
 
 
                                 userLogInForm.addEventListener("submit",function(event){
-                                    console.log(event);
+                                    /* console.log(event); */
                                     userData={
                                         username: event.target.elements.namedItem('userName').value,
                                         password: event.target.elements.namedItem('userPassword').value,
                                     };
-                                    console.log(userData);
+                                    
+                                    let loginMutch = storedUsers.filter(storedUsers => (storedUsers.username === userData.username && storedUsers.password === userData.password));
+
+                                    (loginMutch[0] == null) ? console.log('Аутентификация не удалась') : console.log('Успешная аутентификация!');
+
+                                    console.log(loginMutch);
+                                    /* console.log(userData); */
                                     event.preventDefault();
                                     event.target.reset;
                                 });
